@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TimbervaleDBModelStoreContainer" CdmEntityContainer="TimbervaleDBEntities">
+    <EntitySetMapping Name="BATTLE_MOVE">
+      <EntityTypeMapping TypeName="TimbervaleDBModel.BATTLE_MOVE">
+        <MappingFragment StoreEntitySet="BATTLE_MOVE">
+          <ScalarProperty Name="moveID" ColumnName="moveID" />
+          <ScalarProperty Name="moveName" ColumnName="moveName" />
+          <ScalarProperty Name="moveDescription" ColumnName="moveDescription" />
+          <ScalarProperty Name="movePower" ColumnName="movePower" />
+          <ScalarProperty Name="cooldown" ColumnName="cooldown" />
+          <ScalarProperty Name="compatibility" ColumnName="compatibility" />
+          <ScalarProperty Name="canBind" ColumnName="canBind" />
+          <ScalarProperty Name="canBleed" ColumnName="canBleed" />
+          <ScalarProperty Name="canPoison" ColumnName="canPoison" />
+          <ScalarProperty Name="canParalyze" ColumnName="canParalyze" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENEMies">
+      <EntityTypeMapping TypeName="TimbervaleDBModel.ENEMY">
+        <MappingFragment StoreEntitySet="ENEMY">
+          <ScalarProperty Name="enemyID" ColumnName="enemyID" />
+          <ScalarProperty Name="enemyType" ColumnName="enemyType" />
+          <ScalarProperty Name="enemyName" ColumnName="enemyName" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="enemyDescription" ColumnName="enemyDescription" />
+          <ScalarProperty Name="maxHealth" ColumnName="maxHealth" />
+          <ScalarProperty Name="enemyLevel" ColumnName="enemyLevel" />
+          <ScalarProperty Name="attack" ColumnName="attack" />
+          <ScalarProperty Name="defense" ColumnName="defense" />
+          <ScalarProperty Name="stamina" ColumnName="stamina" />
+          <ScalarProperty Name="stealth" ColumnName="stealth" />
+          <ScalarProperty Name="strength" ColumnName="strength" />
+          <ScalarProperty Name="intellect" ColumnName="intellect" />
+          <ScalarProperty Name="speed" ColumnName="speed" />
+          <ScalarProperty Name="coinsYielded" ColumnName="coinsYielded" />
+          <ScalarProperty Name="xpYielded" ColumnName="xpYielded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENEMY_MOVES">
+      <EntityTypeMapping TypeName="TimbervaleDBModel.ENEMY_MOVES">
+        <MappingFragment StoreEntitySet="ENEMY_MOVES">
+          <ScalarProperty Name="enemyMovesID" ColumnName="enemyMovesID" />
+          <ScalarProperty Name="moveID" ColumnName="moveID" />
+          <ScalarProperty Name="enemyID" ColumnName="enemyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQUIPPED_ITEMS">
+      <EntityTypeMapping TypeName="TimbervaleDBModel.EQUIPPED_ITEMS">
+        <MappingFragment StoreEntitySet="EQUIPPED_ITEMS">
+          <ScalarProperty Name="equippedItemsID" ColumnName="equippedItemsID" />
+          <ScalarProperty Name="playerID" ColumnName="playerID" />
+          <ScalarProperty Name="enemyID" ColumnName="enemyID" />
+          <ScalarProperty Name="itemID" ColumnName="itemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITEMs">
+      <EntityTypeMapping TypeName="TimbervaleDBModel.ITEM">
+        <MappingFragment StoreEntitySet="ITEM">
+          <ScalarProperty Name="itemID" ColumnName="itemID" />
+          <ScalarProperty Name="itemName" ColumnName="itemName" />
+          <ScalarProperty Name="itemDescription" ColumnName="itemDescription" />
+          <ScalarProperty Name="itemType" ColumnName="itemType" />
+          <ScalarProperty Name="requiredLevel" ColumnName="requiredLevel" />
+          <ScalarProperty Name="rarity" ColumnName="rarity" />
+          <ScalarProperty Name="flavourText" ColumnName="flavourText" />
+          <ScalarProperty Name="stat1" ColumnName="stat1" />
+          <ScalarProperty Name="stat2" ColumnName="stat2" />
+          <ScalarProperty Name="stat3" ColumnName="stat3" />
+          <ScalarProperty Name="buff1" ColumnName="buff1" />
+          <ScalarProperty Name="buff2" ColumnName="buff2" />
+          <ScalarProperty Name="buff3" ColumnName="buff3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLAYERs">
+      <EntityTypeMapping TypeName="TimbervaleDBModel.PLAYER">
+        <MappingFragment StoreEntitySet="PLAYER">
+          <ScalarProperty Name="playerID" ColumnName="playerID" />
+          <ScalarProperty Name="playerType" ColumnName="playerType" />
+          <ScalarProperty Name="playerName" ColumnName="playerName" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="playerDescription" ColumnName="playerDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLAYER_MOVES">
+      <EntityTypeMapping TypeName="TimbervaleDBModel.PLAYER_MOVES">
+        <MappingFragment StoreEntitySet="PLAYER_MOVES">
+          <ScalarProperty Name="playerMovesID" ColumnName="playerMovesID" />
+          <ScalarProperty Name="moveID" ColumnName="moveID" />
+          <ScalarProperty Name="playerID" ColumnName="playerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLAYER_STATS">
+      <EntityTypeMapping TypeName="TimbervaleDBModel.PLAYER_STATS">
+        <MappingFragment StoreEntitySet="PLAYER_STATS">
+          <ScalarProperty Name="characterStatsID" ColumnName="characterStatsID" />
+          <ScalarProperty Name="playerID" ColumnName="playerID" />
+          <ScalarProperty Name="maxHealth" ColumnName="maxHealth" />
+          <ScalarProperty Name="currentHealth" ColumnName="currentHealth" />
+          <ScalarProperty Name="damageTaken" ColumnName="damageTaken" />
+          <ScalarProperty Name="currentXP" ColumnName="currentXP" />
+          <ScalarProperty Name="playerLevel" ColumnName="playerLevel" />
+          <ScalarProperty Name="attack" ColumnName="attack" />
+          <ScalarProperty Name="defense" ColumnName="defense" />
+          <ScalarProperty Name="stamina" ColumnName="stamina" />
+          <ScalarProperty Name="stealth" ColumnName="stealth" />
+          <ScalarProperty Name="strength" ColumnName="strength" />
+          <ScalarProperty Name="intellect" ColumnName="intellect" />
+          <ScalarProperty Name="speed" ColumnName="speed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

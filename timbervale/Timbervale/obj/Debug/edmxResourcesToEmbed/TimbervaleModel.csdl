@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TimbervaleDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BATTLE_MOVE">
+    <Key>
+      <PropertyRef Name="moveID" />
+    </Key>
+    <Property Name="moveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="moveName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="moveDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="movePower" Type="Int32" />
+    <Property Name="cooldown" Type="Int32" />
+    <Property Name="compatibility" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="canBind" Type="Boolean" />
+    <Property Name="canBleed" Type="Boolean" />
+    <Property Name="canPoison" Type="Boolean" />
+    <Property Name="canParalyze" Type="Boolean" />
+    <NavigationProperty Name="ENEMY_MOVES" Relationship="Self.FK__ENEMY_MOV__moveI__1FCDBCEB" FromRole="BATTLE_MOVE" ToRole="ENEMY_MOVES" />
+    <NavigationProperty Name="PLAYER_MOVES" Relationship="Self.FK__PLAYER_MO__moveI__1BFD2C07" FromRole="BATTLE_MOVE" ToRole="PLAYER_MOVES" />
+  </EntityType>
+  <EntityType Name="ENEMY">
+    <Key>
+      <PropertyRef Name="enemyID" />
+    </Key>
+    <Property Name="enemyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="enemyType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="enemyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="enemyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="maxHealth" Type="Int32" Nullable="false" />
+    <Property Name="enemyLevel" Type="Int32" Nullable="false" />
+    <Property Name="attack" Type="Int32" Nullable="false" />
+    <Property Name="defense" Type="Int32" Nullable="false" />
+    <Property Name="stamina" Type="Int32" Nullable="false" />
+    <Property Name="stealth" Type="Int32" Nullable="false" />
+    <Property Name="strength" Type="Int32" Nullable="false" />
+    <Property Name="intellect" Type="Int32" Nullable="false" />
+    <Property Name="speed" Type="Int32" Nullable="false" />
+    <Property Name="coinsYielded" Type="Int32" Nullable="false" />
+    <Property Name="xpYielded" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ENEMY_MOVES" Relationship="Self.FK__ENEMY_MOV__enemy__20C1E124" FromRole="ENEMY" ToRole="ENEMY_MOVES" />
+    <NavigationProperty Name="EQUIPPED_ITEMS" Relationship="Self.FK__EQUIPPED___enemy__24927208" FromRole="ENEMY" ToRole="EQUIPPED_ITEMS" />
+  </EntityType>
+  <EntityType Name="ENEMY_MOVES">
+    <Key>
+      <PropertyRef Name="enemyMovesID" />
+    </Key>
+    <Property Name="enemyMovesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="moveID" Type="Int32" Nullable="false" />
+    <Property Name="enemyID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BATTLE_MOVE" Relationship="Self.FK__ENEMY_MOV__moveI__1FCDBCEB" FromRole="ENEMY_MOVES" ToRole="BATTLE_MOVE" />
+    <NavigationProperty Name="ENEMY" Relationship="Self.FK__ENEMY_MOV__enemy__20C1E124" FromRole="ENEMY_MOVES" ToRole="ENEMY" />
+  </EntityType>
+  <EntityType Name="EQUIPPED_ITEMS">
+    <Key>
+      <PropertyRef Name="equippedItemsID" />
+    </Key>
+    <Property Name="equippedItemsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="playerID" Type="Int32" Nullable="false" />
+    <Property Name="enemyID" Type="Int32" Nullable="false" />
+    <Property Name="itemID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ENEMY" Relationship="Self.FK__EQUIPPED___enemy__24927208" FromRole="EQUIPPED_ITEMS" ToRole="ENEMY" />
+    <NavigationProperty Name="ITEM" Relationship="Self.FK__EQUIPPED___itemI__25869641" FromRole="EQUIPPED_ITEMS" ToRole="ITEM" />
+    <NavigationProperty Name="PLAYER" Relationship="Self.FK__EQUIPPED___playe__239E4DCF" FromRole="EQUIPPED_ITEMS" ToRole="PLAYER" />
+  </EntityType>
+  <EntityType Name="ITEM">
+    <Key>
+      <PropertyRef Name="itemID" />
+    </Key>
+    <Property Name="itemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="itemName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="itemDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="itemType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="requiredLevel" Type="Int32" Nullable="false" />
+    <Property Name="rarity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="flavourText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="stat1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stat2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="stat3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="buff1" Type="Int32" Nullable="false" />
+    <Property Name="buff2" Type="Int32" />
+    <Property Name="buff3" Type="Int32" />
+    <NavigationProperty Name="EQUIPPED_ITEMS" Relationship="Self.FK__EQUIPPED___itemI__25869641" FromRole="ITEM" ToRole="EQUIPPED_ITEMS" />
+  </EntityType>
+  <EntityType Name="PLAYER">
+    <Key>
+      <PropertyRef Name="playerID" />
+    </Key>
+    <Property Name="playerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="playerType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="playerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="playerDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EQUIPPED_ITEMS" Relationship="Self.FK__EQUIPPED___playe__239E4DCF" FromRole="PLAYER" ToRole="EQUIPPED_ITEMS" />
+    <NavigationProperty Name="PLAYER_MOVES" Relationship="Self.FK__PLAYER_MO__playe__1CF15040" FromRole="PLAYER" ToRole="PLAYER_MOVES" />
+    <NavigationProperty Name="PLAYER_STATS" Relationship="Self.FK__PLAYER_ST__playe__15502E78" FromRole="PLAYER" ToRole="PLAYER_STATS" />
+  </EntityType>
+  <EntityType Name="PLAYER_MOVES">
+    <Key>
+      <PropertyRef Name="playerMovesID" />
+    </Key>
+    <Property Name="playerMovesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="moveID" Type="Int32" Nullable="false" />
+    <Property Name="playerID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BATTLE_MOVE" Relationship="Self.FK__PLAYER_MO__moveI__1BFD2C07" FromRole="PLAYER_MOVES" ToRole="BATTLE_MOVE" />
+    <NavigationProperty Name="PLAYER" Relationship="Self.FK__PLAYER_MO__playe__1CF15040" FromRole="PLAYER_MOVES" ToRole="PLAYER" />
+  </EntityType>
+  <EntityType Name="PLAYER_STATS">
+    <Key>
+      <PropertyRef Name="characterStatsID" />
+    </Key>
+    <Property Name="characterStatsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="playerID" Type="Int32" />
+    <Property Name="maxHealth" Type="Int32" Nullable="false" />
+    <Property Name="currentHealth" Type="Int32" Nullable="false" />
+    <Property Name="damageTaken" Type="Int32" Nullable="false" />
+    <Property Name="currentXP" Type="Int32" Nullable="false" />
+    <Property Name="playerLevel" Type="Int32" Nullable="false" />
+    <Property Name="attack" Type="Int32" Nullable="false" />
+    <Property Name="defense" Type="Int32" Nullable="false" />
+    <Property Name="stamina" Type="Int32" Nullable="false" />
+    <Property Name="stealth" Type="Int32" Nullable="false" />
+    <Property Name="strength" Type="Int32" Nullable="false" />
+    <Property Name="intellect" Type="Int32" Nullable="false" />
+    <Property Name="speed" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PLAYER" Relationship="Self.FK__PLAYER_ST__playe__15502E78" FromRole="PLAYER_STATS" ToRole="PLAYER" />
+  </EntityType>
+  <Association Name="FK__ENEMY_MOV__moveI__1FCDBCEB">
+    <End Role="BATTLE_MOVE" Type="Self.BATTLE_MOVE" Multiplicity="1" />
+    <End Role="ENEMY_MOVES" Type="Self.ENEMY_MOVES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BATTLE_MOVE">
+        <PropertyRef Name="moveID" />
+      </Principal>
+      <Dependent Role="ENEMY_MOVES">
+        <PropertyRef Name="moveID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PLAYER_MO__moveI__1BFD2C07">
+    <End Role="BATTLE_MOVE" Type="Self.BATTLE_MOVE" Multiplicity="1" />
+    <End Role="PLAYER_MOVES" Type="Self.PLAYER_MOVES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BATTLE_MOVE">
+        <PropertyRef Name="moveID" />
+      </Principal>
+      <Dependent Role="PLAYER_MOVES">
+        <PropertyRef Name="moveID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ENEMY_MOV__enemy__20C1E124">
+    <End Role="ENEMY" Type="Self.ENEMY" Multiplicity="1" />
+    <End Role="ENEMY_MOVES" Type="Self.ENEMY_MOVES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENEMY">
+        <PropertyRef Name="enemyID" />
+      </Principal>
+      <Dependent Role="ENEMY_MOVES">
+        <PropertyRef Name="enemyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EQUIPPED___enemy__24927208">
+    <End Role="ENEMY" Type="Self.ENEMY" Multiplicity="1" />
+    <End Role="EQUIPPED_ITEMS" Type="Self.EQUIPPED_ITEMS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENEMY">
+        <PropertyRef Name="enemyID" />
+      </Principal>
+      <Dependent Role="EQUIPPED_ITEMS">
+        <PropertyRef Name="enemyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EQUIPPED___itemI__25869641">
+    <End Role="ITEM" Type="Self.ITEM" Multiplicity="1" />
+    <End Role="EQUIPPED_ITEMS" Type="Self.EQUIPPED_ITEMS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITEM">
+        <PropertyRef Name="itemID" />
+      </Principal>
+      <Dependent Role="EQUIPPED_ITEMS">
+        <PropertyRef Name="itemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EQUIPPED___playe__239E4DCF">
+    <End Role="PLAYER" Type="Self.PLAYER" Multiplicity="1" />
+    <End Role="EQUIPPED_ITEMS" Type="Self.EQUIPPED_ITEMS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PLAYER">
+        <PropertyRef Name="playerID" />
+      </Principal>
+      <Dependent Role="EQUIPPED_ITEMS">
+        <PropertyRef Name="playerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PLAYER_MO__playe__1CF15040">
+    <End Role="PLAYER" Type="Self.PLAYER" Multiplicity="1" />
+    <End Role="PLAYER_MOVES" Type="Self.PLAYER_MOVES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PLAYER">
+        <PropertyRef Name="playerID" />
+      </Principal>
+      <Dependent Role="PLAYER_MOVES">
+        <PropertyRef Name="playerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PLAYER_ST__playe__15502E78">
+    <End Role="PLAYER" Type="Self.PLAYER" Multiplicity="0..1" />
+    <End Role="PLAYER_STATS" Type="Self.PLAYER_STATS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PLAYER">
+        <PropertyRef Name="playerID" />
+      </Principal>
+      <Dependent Role="PLAYER_STATS">
+        <PropertyRef Name="playerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TimbervaleDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BATTLE_MOVE" EntityType="Self.BATTLE_MOVE" />
+    <EntitySet Name="ENEMies" EntityType="Self.ENEMY" />
+    <EntitySet Name="ENEMY_MOVES" EntityType="Self.ENEMY_MOVES" />
+    <EntitySet Name="EQUIPPED_ITEMS" EntityType="Self.EQUIPPED_ITEMS" />
+    <EntitySet Name="ITEMs" EntityType="Self.ITEM" />
+    <EntitySet Name="PLAYERs" EntityType="Self.PLAYER" />
+    <EntitySet Name="PLAYER_MOVES" EntityType="Self.PLAYER_MOVES" />
+    <EntitySet Name="PLAYER_STATS" EntityType="Self.PLAYER_STATS" />
+    <AssociationSet Name="FK__ENEMY_MOV__moveI__1FCDBCEB" Association="Self.FK__ENEMY_MOV__moveI__1FCDBCEB">
+      <End Role="BATTLE_MOVE" EntitySet="BATTLE_MOVE" />
+      <End Role="ENEMY_MOVES" EntitySet="ENEMY_MOVES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PLAYER_MO__moveI__1BFD2C07" Association="Self.FK__PLAYER_MO__moveI__1BFD2C07">
+      <End Role="BATTLE_MOVE" EntitySet="BATTLE_MOVE" />
+      <End Role="PLAYER_MOVES" EntitySet="PLAYER_MOVES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ENEMY_MOV__enemy__20C1E124" Association="Self.FK__ENEMY_MOV__enemy__20C1E124">
+      <End Role="ENEMY" EntitySet="ENEMies" />
+      <End Role="ENEMY_MOVES" EntitySet="ENEMY_MOVES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EQUIPPED___enemy__24927208" Association="Self.FK__EQUIPPED___enemy__24927208">
+      <End Role="ENEMY" EntitySet="ENEMies" />
+      <End Role="EQUIPPED_ITEMS" EntitySet="EQUIPPED_ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EQUIPPED___itemI__25869641" Association="Self.FK__EQUIPPED___itemI__25869641">
+      <End Role="ITEM" EntitySet="ITEMs" />
+      <End Role="EQUIPPED_ITEMS" EntitySet="EQUIPPED_ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EQUIPPED___playe__239E4DCF" Association="Self.FK__EQUIPPED___playe__239E4DCF">
+      <End Role="PLAYER" EntitySet="PLAYERs" />
+      <End Role="EQUIPPED_ITEMS" EntitySet="EQUIPPED_ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PLAYER_MO__playe__1CF15040" Association="Self.FK__PLAYER_MO__playe__1CF15040">
+      <End Role="PLAYER" EntitySet="PLAYERs" />
+      <End Role="PLAYER_MOVES" EntitySet="PLAYER_MOVES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PLAYER_ST__playe__15502E78" Association="Self.FK__PLAYER_ST__playe__15502E78">
+      <End Role="PLAYER" EntitySet="PLAYERs" />
+      <End Role="PLAYER_STATS" EntitySet="PLAYER_STATS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
